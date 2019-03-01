@@ -1,10 +1,13 @@
 package com.qianfanyun.lib;
 
 
+import android.net.Uri;
 import android.widget.ImageView;
 
 import com.qianfanyun.lib.base.BaseImageLoaderStrategy;
 import com.qianfanyun.lib.glide.GlideImageLoaderStrategy;
+
+import java.io.File;
 
 /**
  * @author ArcherYc
@@ -42,6 +45,36 @@ public class ImageLoader {
         mImageLoaderStrategy.loadImage(imageView, url);
     }
 
+    public void loadImage(ImageView imageView, int resId, ImageOptions imageOptions) {
+        mImageLoaderStrategy.loadImage(imageView, resId, imageOptions);
+    }
+
+    public void loadImage(ImageView imageView, int resId) {
+        mImageLoaderStrategy.loadImage(imageView, resId);
+    }
+
+    public void loadImage(ImageView imageView, File file) {
+        mImageLoaderStrategy.loadImage(imageView, file);
+    }
+
+    public void loadImage(ImageView imageView, File file, ImageOptions imageOptions) {
+        mImageLoaderStrategy.loadImage(imageView, file, imageOptions);
+    }
+
+    public void loadImage(ImageView imageView, Uri uri) {
+        mImageLoaderStrategy.loadImage(imageView, uri);
+    }
+
+    public void loadImage(ImageView imageView, Uri uri, ImageOptions imageOptions) {
+        mImageLoaderStrategy.loadImage(imageView, uri, imageOptions);
+    }
+
+
+    /**
+     * 设置图片加载使用的框架，默认为Glide
+     *
+     * @param imageLoaderStrategy
+     */
     public void setImageLoaderStrategy(BaseImageLoaderStrategy imageLoaderStrategy) {
         this.mImageLoaderStrategy = imageLoaderStrategy;
     }

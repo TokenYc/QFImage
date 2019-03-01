@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MyAdapter();
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
-        recyclerView.addItemDecoration(new ItemDivider(this));
+        recyclerView.addItemDecoration(new ItemDivider());
     }
 
     private class MyAdapter extends RecyclerView.Adapter {
@@ -63,10 +63,24 @@ public class MainActivity extends AppCompatActivity {
                 textView.setText("加载普通网络图片");
             } else if (i == 1) {
                 ImageLoader.get().loadImage(imageView, IMG_URL, ImageOptions.option().circleCrop().build());
-                textView.setText("加载圆形裁剪图片");
+                textView.setText("circle裁剪图片");
             } else if (i == 2) {
+                ImageLoader.get().loadImage(imageView, IMG_URL, ImageOptions.option().centerCrop().build());
+                textView.setText("centerCrop裁剪");
+            } else if (i == 3) {
                 ImageLoader.get().loadImage(imageView, GIF_URL);
                 textView.setText("加载GIF");
+            } else if (i == 4) {
+                ImageLoader.get().loadImage(imageView, GIF_URL, ImageOptions.option().roundCorner(30).build());
+                textView.setText("加载圆角图片");
+            } else if (i == 5) {
+                ImageLoader.get().loadImage(imageView, R.mipmap.meizi);
+                textView.setText("加载资源文件图片");
+            } else if (i == 6) {
+                ImageLoader.get().loadImage(imageView, R.mipmap.meizi, ImageOptions.option().override(100, 100).build());
+                textView.setText("自定义加载宽高");
+            } else if (i == 7) {
+
             }
 
 
@@ -74,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return 3;
+            return 7;
         }
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -96,13 +110,11 @@ public class MainActivity extends AppCompatActivity {
 
         private int itemHeight;
 
-        private int paddingLeft;
 
-        public ItemDivider(Context context) {
+        public ItemDivider() {
             paint = new Paint(Paint.ANTI_ALIAS_FLAG);
             paint.setColor(Color.parseColor("#E5E5E5"));
             itemHeight = 3;
-            paddingLeft = dp2px(context, 5);
         }
 
         @Override
@@ -125,9 +137,5 @@ public class MainActivity extends AppCompatActivity {
             super.getItemOffsets(outRect, view, parent, state);
         }
 
-        public int dp2px(Context context, float dpValue) {
-            final float scale = context.getResources().getDisplayMetrics().density;
-            return (int) (dpValue * scale + 0.5f);
-        }
     }
 }

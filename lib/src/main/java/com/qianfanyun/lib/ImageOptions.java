@@ -13,6 +13,11 @@ public class ImageOptions {
     private int errorId;
     private Drawable errorDrawable;
     private boolean circleCrop;
+    private boolean centerCrop;
+    private int roundCorner;
+    private int overrideWidth;
+    private int overrideHeight;
+
 
     public int getPlaceholderId() {
         return placeholderId;
@@ -35,12 +40,33 @@ public class ImageOptions {
         return circleCrop;
     }
 
-    public ImageOptions(int placeholderId, int errorId, boolean circleCrop, Drawable placeholderDrawable, Drawable errorDrawable) {
+    public int getRoundCorner() {
+        return roundCorner;
+    }
+
+    public int getOverrideWidth() {
+        return overrideWidth;
+    }
+
+    public int getOverrideHeight() {
+        return overrideHeight;
+    }
+
+    public boolean isCenterCrop() {
+        return centerCrop;
+    }
+
+    public ImageOptions(int placeholderId, int errorId, boolean circleCrop, boolean centerCrop, Drawable placeholderDrawable, Drawable errorDrawable, int roundCorner
+            , int overrideWidth, int overrideHeight) {
         this.placeholderId = placeholderId;
         this.errorId = errorId;
         this.circleCrop = circleCrop;
+        this.centerCrop = centerCrop;
         this.placeholderDrawable = placeholderDrawable;
         this.errorDrawable = errorDrawable;
+        this.roundCorner = roundCorner;
+        this.overrideWidth = overrideWidth;
+        this.overrideHeight = overrideHeight;
     }
 
     public static ImageOptions.Builder option() {
@@ -52,8 +78,12 @@ public class ImageOptions {
         private int placeholderId;
         private int errorId;
         private boolean circleCrop;
+        private boolean centerCrop;
         private Drawable placeholderDrawable;
         private Drawable errorDrawable;
+        private int roundCorner;
+        private int overrideWidth;
+        private int overrideHeight;
 
 
         public Builder placeholder(int resId) {
@@ -86,8 +116,25 @@ public class ImageOptions {
             return this;
         }
 
+        public Builder centerCrop() {
+            this.centerCrop = true;
+            return this;
+        }
+
+        public Builder roundCorner(int corner) {
+            this.roundCorner = corner;
+            return this;
+        }
+
+        public Builder override(int width, int height) {
+            this.overrideWidth = width;
+            this.overrideHeight = height;
+            return this;
+        }
+
         public ImageOptions build() {
-            return new ImageOptions(placeholderId, errorId, circleCrop, placeholderDrawable, errorDrawable);
+            return new ImageOptions(placeholderId, errorId, circleCrop, centerCrop, placeholderDrawable, errorDrawable, roundCorner,
+                    overrideWidth, overrideHeight);
         }
 
     }
