@@ -71,6 +71,11 @@ public class GlideImageLoaderStrategy implements BaseImageLoaderStrategy {
         loadWidthOption(imageView, requestBuilder, options);
     }
 
+    @Override
+    public void setDiskCacheSize(long cacheSize) {
+        QFAppGlideModule.DISK_CACHE_SIZE = cacheSize;
+    }
+
     /**
      * 使用配置好的参数进行加载
      *

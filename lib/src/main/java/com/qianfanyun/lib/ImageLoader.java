@@ -69,6 +69,9 @@ public class ImageLoader {
         mImageLoaderStrategy.loadImage(imageView, uri, imageOptions);
     }
 
+    public void setDiskCacheSize(long size){
+        mImageLoaderStrategy.setDiskCacheSize(size);
+    }
 
     /**
      * 设置图片加载使用的框架，默认为Glide

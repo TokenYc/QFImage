@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new ItemDivider());
+        ImageLoader.get().setDiskCacheSize(100*1024*1024);
     }
 
     private class MyAdapter extends RecyclerView.Adapter {

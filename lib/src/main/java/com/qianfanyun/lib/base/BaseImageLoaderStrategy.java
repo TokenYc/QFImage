@@ -31,4 +31,6 @@ public interface BaseImageLoaderStrategy {
     void loadImage(ImageView imageView, Uri uri);
 
     void loadImage(ImageView imageView, Uri uri, ImageOptions options);
+
+    void setDiskCacheSize (long cacheSize);
 }
