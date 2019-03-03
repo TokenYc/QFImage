@@ -25,7 +25,7 @@ ImageLoader.get().loadImage(imageView, uri);
 ```
 
 #### 加载配置
-QFImage通过配置选项可以对加载的图片进行各种配置
+QFImage支持对加载的图片进行各种配置
 
 以典型的圆形图片为例
 
@@ -35,7 +35,7 @@ ImageLoader.get().loadImage(imageView, IMG_URL,
                         .circleCrop()
                         .build());
 ```
-通过构建ImageOption对象，可以对图片的加载进行配置，目前支持的配置有
+进行配置需要构建ImageOptions对象，目前支持的配置有
  - placeholder 占位图
  - error 加载失败显示的图片
  - circleCrop 圆形裁剪
