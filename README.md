@@ -54,7 +54,7 @@ ImageLoader.get().setImageLoaderStrategy(GlideImageLoaderStrategy())
 目前仅支持GlideImageLoaderStrategy
 
 #### 自定义磁盘缓存大小
-QFImage支持自定义图片磁盘缓存
+QFImage支持自定义图片磁盘缓存大小
 ```
 ImageLoader.get().setDiskCacheSize(100*1024*1024);
 ```
