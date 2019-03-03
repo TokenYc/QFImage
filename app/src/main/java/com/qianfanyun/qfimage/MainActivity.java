@@ -63,7 +63,10 @@ public class MainActivity extends AppCompatActivity {
                 ImageLoader.get().loadImage(imageView, IMG_URL);
                 textView.setText("加载普通网络图片");
             } else if (i == 1) {
-                ImageLoader.get().loadImage(imageView, IMG_URL, ImageOptions.option().circleCrop().build());
+                ImageLoader.get().loadImage(imageView, IMG_URL,
+                        ImageOptions.option()
+                        .circleCrop()
+                        .build());
                 textView.setText("circle裁剪图片");
             } else if (i == 2) {
                 ImageLoader.get().loadImage(imageView, IMG_URL, ImageOptions.option().centerCrop().build());
