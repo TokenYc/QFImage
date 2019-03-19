@@ -1,11 +1,11 @@
-package com.qianfanyun.lib;
+package com.qianfanyun.qfimage;
 
 
 import android.net.Uri;
 import android.widget.ImageView;
 
-import com.qianfanyun.lib.base.BaseImageLoaderStrategy;
-import com.qianfanyun.lib.glide.GlideImageLoaderStrategy;
+import com.qianfanyun.qfimage.base.BaseImageLoaderStrategy;
+import com.qianfanyun.qfimage.glide.GlideImageLoaderStrategy;
 
 import java.io.File;
 

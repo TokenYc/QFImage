@@ -1,4 +1,4 @@
-package com.qianfanyun.lib;
+package com.qianfanyun.qfimage;
 
 import android.content.Context;
 import androidx.test.InstrumentationRegistry;

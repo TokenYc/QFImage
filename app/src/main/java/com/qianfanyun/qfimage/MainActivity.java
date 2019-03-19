@@ -15,9 +15,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.qianfanyun.lib.ImageLoader;
-import com.qianfanyun.lib.ImageOptions;
-
 public class MainActivity extends AppCompatActivity {
 
     private static final String IMG_URL = "https://wx4.sinaimg.cn/mw690/b5ff8eb1ly1fzr5yfkup4j22801o0kjo.jpg";

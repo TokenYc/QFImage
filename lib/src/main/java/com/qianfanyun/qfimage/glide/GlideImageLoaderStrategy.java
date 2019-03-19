@@ -1,4 +1,4 @@
-package com.qianfanyun.lib.glide;
+package com.qianfanyun.qfimage.glide;
 
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -6,8 +6,8 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.qianfanyun.lib.ImageOptions;
-import com.qianfanyun.lib.base.BaseImageLoaderStrategy;
+import com.qianfanyun.qfimage.ImageOptions;
+import com.qianfanyun.qfimage.base.BaseImageLoaderStrategy;
 
 import java.io.File;
 

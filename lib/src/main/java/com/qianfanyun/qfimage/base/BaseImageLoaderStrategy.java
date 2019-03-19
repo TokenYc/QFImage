@@ -1,9 +1,9 @@
-package com.qianfanyun.lib.base;
+package com.qianfanyun.qfimage.base;
 
 import android.net.Uri;
 import android.widget.ImageView;
 
-import com.qianfanyun.lib.ImageOptions;
+import com.qianfanyun.qfimage.ImageOptions;
 
 import java.io.File;
 

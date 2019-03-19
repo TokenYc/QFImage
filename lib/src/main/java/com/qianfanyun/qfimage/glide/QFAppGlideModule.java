@@ -1,4 +1,4 @@
-package com.qianfanyun.lib.glide;
+package com.qianfanyun.qfimage.glide;
 
 import android.content.Context;
 import androidx.annotation.NonNull;
