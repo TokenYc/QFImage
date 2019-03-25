@@ -6,6 +6,17 @@ QFImage产生的初衷是通过制定统一的**标准接口**，减少更换图
 
 ### 使用方法
 
+在AndroidManifest中添加权限
+```
+ <uses-permission android:name="android.permission.INTERNET"/>
+ <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+```
+
+如果需要加载http图片，还需在Application下添加
+```
+ android:usesCleartextTraffic="true"
+```
+
 #### 从不同途径加载图片
 加载一张普通的网络图片非常简单
 ```
