@@ -15,6 +15,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.qianfan.qfimage.ImageOptions;
+import com.qianfan.qfimage.QfImage;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String IMG_URL = "https://wx4.sinaimg.cn/mw690/b5ff8eb1ly1fzr5yfkup4j22801o0kjo.jpg";
@@ -37,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new ItemDivider());
-        ImageLoader.get().setDiskCacheSize(100*1024*1024);
+        QfImage.INSTANCE.setDiskCacheSize(100*1024*1024);
     }
 
     private class MyAdapter extends RecyclerView.Adapter {
@@ -56,28 +59,28 @@ public class MainActivity extends AppCompatActivity {
             TextView textView = holder.textView;
 
             if (i == 0) {
-                ImageLoader.get().loadImage(imageView, IMG_URL);
+                QfImage.INSTANCE.loadImage(imageView, IMG_URL);
                 textView.setText("加载普通网络图片");
             } else if (i == 1) {
-                ImageLoader.get().loadImage(imageView, IMG_URL,
-                        ImageOptions.option()
+                QfImage.INSTANCE.loadImage(imageView, IMG_URL,
+                        ImageOptions.Companion.option()
                         .circleCrop()
                         .build());
                 textView.setText("circle裁剪图片");
             } else if (i == 2) {
-                ImageLoader.get().loadImage(imageView, IMG_URL, ImageOptions.option().centerCrop().build());
+                QfImage.INSTANCE.loadImage(imageView, IMG_URL, ImageOptions.Companion.centerCrop().build());
                 textView.setText("centerCrop裁剪");
             } else if (i == 3) {
-                ImageLoader.get().loadImage(imageView, GIF_URL);
+                QfImage.INSTANCE.loadImage(imageView, GIF_URL);
                 textView.setText("加载GIF");
             } else if (i == 4) {
-                ImageLoader.get().loadImage(imageView, GIF_URL, ImageOptions.option().roundCorner(30).build());
+                QfImage.INSTANCE.loadImage(imageView, GIF_URL, ImageOptions.Companion.roundCorner(30).build());
                 textView.setText("加载圆角图片");
             } else if (i == 5) {
-                ImageLoader.get().loadImage(imageView, R.mipmap.meizi);
+                QfImage.INSTANCE.loadImage(imageView, R.mipmap.meizi);
                 textView.setText("加载资源文件图片");
             } else if (i == 6) {
-                ImageLoader.get().loadImage(imageView, R.mipmap.meizi, ImageOptions.option().override(100, 100).build());
+                QfImage.INSTANCE.loadImage(imageView, R.mipmap.meizi, ImageOptions.Companion.override(100, 100).build());
                 textView.setText("自定义加载宽高");
             } else if (i == 7) {
 
