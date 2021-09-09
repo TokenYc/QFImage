@@ -6,7 +6,9 @@ import android.net.Uri
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
+import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.model.GlideUrl
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.transition.DrawableCrossFadeFactory
@@ -121,15 +123,20 @@ class GlideImageLoaderStrategy : BaseImageLoaderStrategy {
         if (circleCrop) {
             requestBuilder.circleCrop()
         }
+
         if (centerCrop) {
             requestBuilder.centerCrop()
         }
         if (roundCorner > 0) {
-            requestBuilder.transform(RoundedCorners(roundCorner))
+            requestBuilder.transform(
+                MultiTransformation(CenterCrop(),RoundedCorners(roundCorner))
+                    )
         }
+
         if (overrideWidth > 0 && overrideHeight > 0) {
             requestBuilder.override(overrideWidth, overrideHeight)
         }
+
         if (fadeDuration > 0) {
             if (crossFadeEnable) {
                 requestBuilder.transition(DrawableTransitionOptions().crossFade(DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true)))
@@ -137,6 +144,8 @@ class GlideImageLoaderStrategy : BaseImageLoaderStrategy {
                 requestBuilder.transition(DrawableTransitionOptions().crossFade(fadeDuration))
             }
         }
+
+
     }
 
     private fun setHeaders(url: String): GlideUrl {

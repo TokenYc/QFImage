@@ -22,7 +22,15 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        maven { url "https://jitpack.io" }
+        maven {
+            credentials {
+                username 'admin'
+                password 'qianfan1025'
+            }
+            // 配置仓库地址（获取方式见上文）
+            url "http://47.110.84.62:8081/repository/qfui/"
+        }
     }
 }
 

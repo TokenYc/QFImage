@@ -16,4 +16,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
     kapt 'com.github.bumptech.glide:compiler:4.12.0'
     api 'jp.wasabeef:glide-transformations:4.3.0'
+    api 'com.qianfan.qfui:rlayout:1.0.0'
+
 }

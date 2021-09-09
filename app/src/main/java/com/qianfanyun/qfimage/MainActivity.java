@@ -1,22 +1,29 @@
 package com.qianfanyun.qfimage;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.util.Util;
 import com.qianfan.qfimage.ImageOptions;
 import com.qianfan.qfimage.QfImage;
+import com.qianfanyun.qfui.rlayout.RImageView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
 
+    private ImageView imvBanner;
+
     private GridLayoutManager gridLayoutManager;
 
     private MyAdapter adapter;
@@ -34,13 +43,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        QfImage.INSTANCE.init(this);
         recyclerView = findViewById(R.id.recyclerView);
+        imvBanner = findViewById(R.id.banner);
+
         gridLayoutManager = new GridLayoutManager(this, 3);
         adapter = new MyAdapter();
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new ItemDivider());
-        QfImage.INSTANCE.setDiskCacheSize(100*1024*1024);
+        QfImage.INSTANCE.setDiskCacheSize(100 * 1024 * 1024);
+
+        //https://img0.baidu.com/it/u=4280883260,2294162798&fm=26&fmt=auto&gp=0.jpg
+        //https://s3.bmp.ovh/imgs/2021/09/f6dbb2911bc1a68f.jpg
+        QfImage.INSTANCE.loadImage(imvBanner, "https://img0.baidu.com/it/u=4280883260,2294162798&fm=26&fmt=auto&gp=0.jpg"
+                , ImageOptions.Companion
+                        .placeholder(R.color.color_c3c3c3)
+                        .error(R.color.color_c3c3c3)
+                        .centerCrop()
+                        .build());
     }
 
     private class MyAdapter extends RecyclerView.Adapter {
@@ -55,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
             MyViewHolder holder = (MyViewHolder) viewHolder;
-            ImageView imageView = holder.imageView;
+            RImageView imageView = holder.imageView;
             TextView textView = holder.textView;
 
             if (i == 0) {
@@ -64,17 +85,25 @@ public class MainActivity extends AppCompatActivity {
             } else if (i == 1) {
                 QfImage.INSTANCE.loadImage(imageView, IMG_URL,
                         ImageOptions.Companion.option()
-                        .circleCrop()
-                        .build());
+                                .circleCrop()
+                                .build());
                 textView.setText("circle裁剪图片");
             } else if (i == 2) {
-                QfImage.INSTANCE.loadImage(imageView, IMG_URL, ImageOptions.Companion.centerCrop().build());
+                QfImage.INSTANCE.loadImage(imageView, IMG_URL, ImageOptions.Companion
+                        .placeholder(R.color.colorAccent)
+                        .error(R.color.colorAccent)
+                        .centerCrop().build());
                 textView.setText("centerCrop裁剪");
             } else if (i == 3) {
                 QfImage.INSTANCE.loadImage(imageView, GIF_URL);
                 textView.setText("加载GIF");
             } else if (i == 4) {
-                QfImage.INSTANCE.loadImage(imageView, GIF_URL, ImageOptions.Companion.roundCorner(30).build());
+                imageView.getHelper().setCorner(dp2px(MainActivity.this,8));
+                QfImage.INSTANCE.loadImage(imageView, GIF_URL, ImageOptions.Companion
+                        .placeholder(R.color.colorAccent)
+                        .error(R.color.colorAccent)
+                        .centerCrop()
+                        .build());
                 textView.setText("加载圆角图片");
             } else if (i == 5) {
                 QfImage.INSTANCE.loadImage(imageView, R.mipmap.meizi);
@@ -96,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
-            private ImageView imageView;
+            private RImageView imageView;
             private TextView textView;
 
             public MyViewHolder(@NonNull View itemView) {
@@ -140,5 +169,10 @@ public class MainActivity extends AppCompatActivity {
             super.getItemOffsets(outRect, view, parent, state);
         }
 
+    }
+
+    public static int dp2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
     }
 }
