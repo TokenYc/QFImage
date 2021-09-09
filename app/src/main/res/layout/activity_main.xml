@@ -13,6 +13,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent"
         app:corner_radius="8dp"
         />

@@ -56,11 +56,10 @@ public class MainActivity extends AppCompatActivity {
 
         //https://img0.baidu.com/it/u=4280883260,2294162798&fm=26&fmt=auto&gp=0.jpg
         //https://s3.bmp.ovh/imgs/2021/09/f6dbb2911bc1a68f.jpg
-        QfImage.INSTANCE.loadImage(imvBanner, "https://img0.baidu.com/it/u=4280883260,2294162798&fm=26&fmt=auto&gp=0.jpg"
+        QfImage.INSTANCE.loadImage(imvBanner, "https://img0.baidu.com/it/u=409631764,1938588350&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500"
                 , ImageOptions.Companion
                         .placeholder(R.color.color_c3c3c3)
                         .error(R.color.color_c3c3c3)
-                        .centerCrop()
                         .build());
     }
 

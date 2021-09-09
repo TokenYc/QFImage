@@ -74,11 +74,21 @@ class ImageOptions(
             return this
         }
 
+        @Deprecated("Glide的corner仅对加载的图片设置圆角，对placeHolder和error无效", ReplaceWith(
+            "RImageView app:corner_radius=\"4dp\"",
+            "com.qianfanyun.qfui.rlayout.RImageView"
+        )
+        )
         fun roundCorner(corner: Int): Builder {
             roundCorner = corner
             return this
         }
 
+        @Deprecated("Glide的corner仅对加载的图片设置圆角，对placeHolder和error无效", ReplaceWith(
+            "RImageView app:corner_radius=\"4dp\"",
+            "com.qianfanyun.qfui.rlayout.RImageView"
+        )
+        )
         fun roundCornerDp(corner: Int): Builder {
             roundCorner = dp2px(QfImage.applicationContext, corner.toFloat())
             return this
